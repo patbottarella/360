@@ -44,39 +44,39 @@ class Image extends React.Component {
 
     //RENDER IMAGE POSITION 8
     if (x > 0 && x < (windowWidth / 2) - (imageWidth / 2) && y >= 0 && y <= (windowHeight / 2) - (imageHeight / 2)) {
-      return < img className="Image" src={image_pos8} />
+      return < img className="Image" alt="teamMember" src={image_pos8} />
     }
     //RENDER IMAGE POSITION 1
     else if (x >= (windowWidth / 2) - (imageWidth / 2) && x <= (windowWidth / 2) + (imageWidth / 2) && y >= 0 && y <= (windowHeight / 2) - (imageHeight / 2)) {
-      return < img className="Image" src={image_pos1} />
+      return < img className="Image" alt="teamMember" src={image_pos1} />
     }
     //RENDER IMAGE POSITION 2
     else if (x >= (windowWidth / 2) + (imageWidth / 2) && x <= windowWidth && y >= 0 && y <= (windowHeight / 2) - (imageHeight / 2)) {
-      return < img className="Image" src={image_pos2} />
+      return < img className="Image" alt="teamMember" src={image_pos2} />
     }
     //RENDER IMAGE POSITION 3
     else if (x >= (windowWidth / 2) + (imageWidth / 2) && x <= windowWidth && y >= (windowHeight / 2) - (imageHeight / 2) && y <= (windowHeight / 2) + (imageHeight / 2)) {
-      return <img className="Image" src={image_pos3} />
+      return <img className="Image" alt="teamMember" src={image_pos3} />
     }
     //RENDER IMAGE POSITION 4
     else if (x >= (windowWidth / 2) + (imageWidth / 2) && x <= windowWidth && y >= (windowHeight / 2) + (imageHeight / 2) && y <= windowHeight) {
-      return <img className="Image" src={image_pos4} />
+      return <img className="Image" alt="teamMember" src={image_pos4} />
     }
     //RENDER IMAGE POSITION 5
     else if (x >= (windowWidth / 2) - (imageWidth / 2) && x <= (windowWidth / 2) + (imageWidth / 2) && y >= (windowHeight / 2) + (imageHeight / 2) && y <= windowHeight) {
-      return <img className="Image" src={image_pos5} />
+      return <img className="Image" alt="teamMember" src={image_pos5} />
     }
     //RENDER IMAGE POSITION 6
     else if (x > 0 && x < (windowWidth / 2) - (imageWidth / 2) && y >= (windowHeight / 2) + (imageHeight / 2) && y <= windowHeight) {
-      return <img className="Image" src={image_pos6} />
+      return <img className="Image" alt="teamMember" src={image_pos6} />
     }
     //RENDER IMAGE POSITION 7
     else if (x > 0 && x < (windowWidth / 2) - (imageWidth / 2) && y >= (windowHeight / 2) - (imageHeight / 2) && y <= (windowHeight / 2) + (imageHeight / 2)) {
-      return <img className="Image" src={image_pos7} />
+      return <img className="Image" alt="teamMember" src={image_pos7} />
     }
     //RENDER DEFAULT IMAGE
     else {
-      return <img className="Image" src={default_image} />
+      return <img className="Image" alt="teamMember" src={default_image} />
     }
   }
 
