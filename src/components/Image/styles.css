@@ -1,23 +1,20 @@
 .Image {
-  width: 250px;
+  width: 150px;
   height: 180px;
-  background-color: lightgray;
-  position: absolute;
-  top: calc(50% - 90px);
-  left:calc(50% - 125px);
+  display: block;
   border-radius: 20px;
   border: 1px solid white;
-  transform: rotate(90deg);
 }
 
 .ImageWrapper {
-  /*position: relative;
-  margin-top: calc(50% - 90px);*/
-  /*transform: rotate(90deg);*/
-  width: 250px;
-  margin-top: 250px;
+  display: inline-block;
+  margin: 20px;
 }
 
-.Image_test {
-  width: 100%;
+.InfoBox {
+  width: 250px;
+  text-align: left;
+  padding: 5px;
+  background-color: rgba(194, 97, 97, 0.4);
 }
+
