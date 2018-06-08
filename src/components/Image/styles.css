@@ -4,6 +4,11 @@
   display: block;
   border-radius: 20px;
   border: 1px solid white;
+  filter: grayscale(100%);
+}
+
+.Image:hover {
+    filter: grayscale(0%);
 }
 
 .Image:hover + .NameBox {
