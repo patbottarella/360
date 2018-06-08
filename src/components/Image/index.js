@@ -117,6 +117,7 @@ class TestImage extends React.Component {
     return (
       <div className="ImageWrapper">
         {this.renderImage()}
+        <div className="NameBox">Patrick Bottarella</div>
       </div>
     );
   }

@@ -6,15 +6,37 @@
   border: 1px solid white;
 }
 
+.Image:hover + .NameBox {
+  display: block;
+}
+
 .ImageWrapper {
   display: inline-block;
   margin: 20px;
+  position: relative;
 }
 
-.InfoBox {
-  width: 250px;
-  text-align: left;
-  padding: 5px;
-  background-color: rgba(194, 97, 97, 0.4);
+.NameBox {
+  padding: 3px;
+  background-color: rgba(30, 143, 255, 1);
+  border-radius: 5px;
+  position: absolute;
+  top: -20px;
+  left: 50px;
+  z-index: 1;
+  display: none;
 }
+
+.NameBox::before {
+  content: '';
+  background-color: rgba(30, 143, 255, 1);
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  bottom: -2px;
+  left: 6px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
 

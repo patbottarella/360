@@ -7,7 +7,7 @@ const Entity = () => {
   return (
     <div>
       <ReactCursorPosition className="Wrapper">
-        <div className="Header">HEADER</div>
+        <div className="Header">DUMMY HEADER</div>
         <Image />
         <Image />
         <Image />
