@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 import './styles.css';
 
 
-class TestImage extends React.Component {
+class Image extends React.Component {
   constructor(props) {
     super(props);
 
@@ -117,10 +117,10 @@ class TestImage extends React.Component {
     return (
       <div className="ImageWrapper">
         {this.renderImage()}
-        <div className="NameBox">Patrick Bottarella</div>
+        <div className="NameBox">{this.props.name}</div>
       </div>
     );
   }
 }
 
-export default TestImage;
+export default Image;
