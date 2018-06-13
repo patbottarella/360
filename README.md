@@ -18,3 +18,5 @@ The image knows several things:
 
 with these informations we can calculate the area in which the cursor is and render the right image.
 you can see the calculation in the attached file.
+
+[attached-files](https://github.com/patbottarella/360/edit/master/Teampage_360-calculation.pdf)
