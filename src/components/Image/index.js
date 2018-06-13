@@ -16,6 +16,8 @@ class Image extends React.Component {
   constructor(props) {
     super(props);
 
+    this.Ref = React.createRef();
+
     this.state = {
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight,
@@ -45,10 +47,10 @@ class Image extends React.Component {
   updateImageLocation = () => {
     this.setState({
       imageCoordinates: {
-        width: parseInt(Number(ReactDOM.findDOMNode(this.refs.image).getBoundingClientRect().width).toFixed(0)),
-        height: parseInt(Number(ReactDOM.findDOMNode(this.refs.image).getBoundingClientRect().height).toFixed(0)),
-        topPosition: Math.round(ReactDOM.findDOMNode(this.refs.image).getBoundingClientRect().top),
-        leftPosition: Math.round(ReactDOM.findDOMNode(this.refs.image).getBoundingClientRect().left),
+        width: parseInt(Number(ReactDOM.findDOMNode(this.Ref.current).getBoundingClientRect().width).toFixed(0)),
+        height: parseInt(Number(ReactDOM.findDOMNode(this.Ref.current).getBoundingClientRect().height).toFixed(0)),
+        topPosition: Math.round(ReactDOM.findDOMNode(this.Ref.current).getBoundingClientRect().top),
+        leftPosition: Math.round(ReactDOM.findDOMNode(this.Ref.current).getBoundingClientRect().left),
       }
     });
   }
@@ -109,7 +111,7 @@ class Image extends React.Component {
 
   renderImage = () => {
     return (
-      <img className="Image" ref="image" alt="teamMember" src={this.getImageSource()} />
+      <img className="Image" ref={this.Ref} alt="teamMember" src={this.getImageSource()} />
     );
   }
 
