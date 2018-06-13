@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 import './styles.css';
 
 
-class Image extends React.Component {
+class CursorViewImage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -125,4 +125,4 @@ class Image extends React.Component {
   }
 }
 
-export default Image;
+export default CursorViewImage;
