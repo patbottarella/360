@@ -1,11 +1,13 @@
 # Team Member 360
 
 # About
+
 This is a prototype of a react component, which displays the teammembers of a company. 
 The images of the teammembers will fallow the cursor in the Dom and referable to that,
-render the images in the way that all teammembers are always looking to the cursor.
+render the images so it looks like every teammember is always looking to the current position of the cursor.
 
 # Start Application
+
 --> yarn start
 
 # Technical details
