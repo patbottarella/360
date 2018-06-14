@@ -16,6 +16,7 @@ class CursorViewImage extends React.Component {
   constructor(props) {
     super(props);
 
+    //create a reference that we will add to the HTML-Element from which we need the DOM position
     this.Ref = React.createRef();
 
     this.state = {
@@ -31,19 +32,20 @@ class CursorViewImage extends React.Component {
   }
 
   componentDidMount() {
-    // Additionally I could have just used an arrow function for the binding `this` to the component...
-    window.addEventListener("resize", this.updateDimensions);
+    //event-listeners to update the location of the image in the DOM if the width or height of the browser changes
+    window.addEventListener("resize", this.updateScreenSize);
     window.addEventListener("resize", this.updateImageLocation);
     this.updateImageLocation();
   }
 
-  updateDimensions = () => {
+  updateScreenSize = () => {
     this.setState({
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
     });
   }
 
+  //update the state of the component and set the new values for their current position in the DOM
   updateImageLocation = () => {
     this.setState({
       imageCoordinates: {
@@ -55,6 +57,7 @@ class CursorViewImage extends React.Component {
     });
   }
 
+  //check if cursor is on the left side of the image
   isLeft = (data, cursorLocation) => {
     if (data.cursorPosition.x >= 0 && data.cursorPosition.x <= data.imagePosition.x) {
       cursorLocation.isLeft = true;
@@ -62,6 +65,7 @@ class CursorViewImage extends React.Component {
     return cursorLocation;
   }
 
+  //check if cursor is on top of the image
   isUpper = (data, cursorLocation) => {
     if(data.cursorPosition.y >= 0 && data.cursorPosition.y <= data.imagePosition.y) {
       cursorLocation.isUpper = true;
@@ -69,6 +73,7 @@ class CursorViewImage extends React.Component {
     return cursorLocation;
   }
 
+  //check if cursor is on the right side of the image
   isRight = (data, cursorLocation) => {
     if (data.cursorPosition.x >= (data.imagePosition.x + data.imageWidth) && data.cursorPosition.x <= data.screenDefinitions.width) {
       cursorLocation.isRight = true;
@@ -76,6 +81,7 @@ class CursorViewImage extends React.Component {
     return cursorLocation;
   }
 
+  //check if cursor is below the image
   isBelow = (data, cursorLocation) => {
     if (data.cursorPosition.y >= (data.imagePosition.y + data.imageHeight) && data.cursorPosition.y <= data.screenDefinitions.height) {
       cursorLocation.isBelow = true;
@@ -84,6 +90,7 @@ class CursorViewImage extends React.Component {
   }
 
   calculateImagePosition = (data, cursorLocation) => {
+    //update the cursorLocation: set the property to 'true', if the cursor is below the image etc...
     cursorLocation = this.isUpper(data, cursorLocation);
     cursorLocation = this.isRight(data, cursorLocation);
     cursorLocation = this.isLeft(data, cursorLocation);
@@ -94,6 +101,7 @@ class CursorViewImage extends React.Component {
 
 
   getImageSource = () => {
+    //initialize used coordinates to calculate which image will be rendered
     const calculationData = {
       imagePosition: {
         x: this.state.imageCoordinates.leftPosition,
@@ -111,13 +119,10 @@ class CursorViewImage extends React.Component {
       }
     };
 
-    const cursorLocation = {
-      isUpper: 0,
-      isRight: 0,
-      isLeft: 0,
-      isBelow: 0
-    };
+    //preparing an empty object for the response of the calculation
+    const cursorLocation = {};
 
+    //calculate the current position of the cursor (left of the image, below the image, etc...)
     this.calculateImagePosition(calculationData, cursorLocation);
 
     //RENDER IMAGE POSITION 8
