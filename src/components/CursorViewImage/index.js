@@ -55,52 +55,101 @@ class CursorViewImage extends React.Component {
     });
   }
 
+  isLeft = (data, cursorLocation) => {
+    if (data.cursorPosition.x >= 0 && data.cursorPosition.x <= data.imagePosition.x) {
+      cursorLocation.isLeft = true;
+    }
+    return cursorLocation;
+  }
+
+  isUpper = (data, cursorLocation) => {
+    if(data.cursorPosition.y >= 0 && data.cursorPosition.y <= data.imagePosition.y) {
+      cursorLocation.isUpper = true;
+    }
+    return cursorLocation;
+  }
+
+  isRight = (data, cursorLocation) => {
+    if (data.cursorPosition.x >= (data.imagePosition.x + data.imageWidth) && data.cursorPosition.x <= data.screenDefinitions.width) {
+      cursorLocation.isRight = true;
+    }
+    return cursorLocation;
+  }
+
+  isBelow = (data, cursorLocation) => {
+    if (data.cursorPosition.y >= (data.imagePosition.y + data.imageHeight) && data.cursorPosition.y <= data.screenDefinitions.height) {
+      cursorLocation.isBelow = true;
+    }
+    return cursorLocation;
+  }
+
+  calculateImagePosition = (data, cursorLocation) => {
+    cursorLocation = this.isUpper(data, cursorLocation);
+    cursorLocation = this.isRight(data, cursorLocation);
+    cursorLocation = this.isLeft(data, cursorLocation);
+    cursorLocation = this.isBelow(data, cursorLocation);
+
+    //console.log('cursorLocation', cursorLocation);
+  }
+
+
   getImageSource = () => {
-    const imagePosition = {
-      x: this.state.imageCoordinates.leftPosition,
-      y: this.state.imageCoordinates.topPosition
-    };
-    const imageWidth = this.state.imageCoordinates.width;
-    const imageHeight = this.state.imageCoordinates.height;
-    const cursorPosition = {
-      x: this.props.position.x,
-      y: this.props.position.y
-    };
-    const screenDefinitions = {
-      width: this.state.screenWidth,
-      height: this.state.screenHeight
+    const calculationData = {
+      imagePosition: {
+        x: this.state.imageCoordinates.leftPosition,
+        y: this.state.imageCoordinates.topPosition
+      },
+      imageWidth: this.state.imageCoordinates.width,
+      imageHeight: this.state.imageCoordinates.height,
+      cursorPosition: {
+        x: this.props.position.x,
+        y: this.props.position.y
+      },
+      screenDefinitions: {
+        width: this.state.screenWidth,
+        height: this.state.screenHeight
+      }
     };
 
+    const cursorLocation = {
+      isUpper: 0,
+      isRight: 0,
+      isLeft: 0,
+      isBelow: 0
+    };
+
+    this.calculateImagePosition(calculationData, cursorLocation);
+
     //RENDER IMAGE POSITION 8
-    if (cursorPosition.x >= 0 && cursorPosition.x <= imagePosition.x && cursorPosition.y >= 0 && cursorPosition.y <= imagePosition.y) {
+    if (cursorLocation.isLeft && cursorLocation.isUpper) {
       return image_pos8;
     }
     //RENDER IMAGE POSITION 1
-    else if (cursorPosition.x >= imagePosition.x && cursorPosition.x <= (imagePosition.x + imageWidth) && cursorPosition.y >= 0 && cursorPosition.y <= imagePosition.y) {
+    else if (cursorLocation.isUpper && !cursorLocation.isLeft && !cursorLocation.isRight) {
       return image_pos1;
     }
     //RENDER IMAGE POSITION 2
-    else if (cursorPosition.x >= (imagePosition.x + imageWidth) && cursorPosition.x <= screenDefinitions.width && cursorPosition.y >= 0 && cursorPosition.y <= imagePosition.y) {
+    else if (cursorLocation.isUpper && cursorLocation.isRight) {
       return image_pos2;
     }
     //RENDER IMAGE POSITION 3
-    else if (cursorPosition.x >= (imagePosition.x + imageWidth) && cursorPosition.x <= screenDefinitions.width && cursorPosition.y >= imagePosition.y && cursorPosition.y <= (imagePosition.y + imageHeight)) {
+    else if (cursorLocation.isRight && !cursorLocation.isUpper && !cursorLocation.isBelow) {
       return image_pos3;
     }
     //RENDER IMAGE POSITION 4
-    else if (cursorPosition.x >= (imagePosition.x + imageWidth) && cursorPosition.x <= screenDefinitions.width && cursorPosition.y >= (imagePosition.y + imageHeight) && cursorPosition.y <= screenDefinitions.height) {
+    else if (cursorLocation.isRight && cursorLocation.isBelow) {
       return image_pos4;
     }
     //RENDER IMAGE POSITION 5
-    else if (cursorPosition.x >= imagePosition.x && cursorPosition.x <= (imagePosition.x + imageWidth) && cursorPosition.y >= (imagePosition.y + imageHeight) && cursorPosition.y <= screenDefinitions.height) {
+    else if (cursorLocation.isBelow && !cursorLocation.isLeft && !cursorLocation.isRight) {
       return image_pos5;
     }
     //RENDER IMAGE POSITION 6
-    else if (cursorPosition.x >= 0 && cursorPosition.x <= imagePosition.x && cursorPosition.y >= (imagePosition.y + imageHeight) && cursorPosition.y <= screenDefinitions.height) {
+    else if (cursorLocation.isLeft && cursorLocation.isBelow) {
       return image_pos6;
     }
     //RENDER IMAGE POSITION 7
-    else if (cursorPosition.x >= 0 && cursorPosition.x <= imagePosition.x && cursorPosition.y >= imagePosition.y && cursorPosition.y <= (imagePosition.y + imageHeight)) {
+    else if (cursorLocation.isLeft && !cursorLocation.isBelow && !cursorLocation.isUpper) {
       return image_pos7;
     }
     //RENDER DEFAULT IMAGE
