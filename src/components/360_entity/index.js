@@ -2,9 +2,14 @@ import React from 'react';
 import './styles.css';
 import ReactCursorPosition from 'react-cursor-position';
 import CursorViewImage from '../CursorViewImage';
+//import teamMembers from '../../assets/TeamMembers';
+
 
 import { EMPLOYEELIST } from '../../employee.js';
 console.log('EMPLOYEELIST', EMPLOYEELIST);
+
+//console.log(teamMembers);
+
 
 const Entity = () => {
   return (
