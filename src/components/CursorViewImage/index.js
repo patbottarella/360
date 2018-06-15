@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import image_pos1 from '../../images/pat_pos1.jpg';
-import image_pos2 from '../../images/pat_pos2.jpg';
-import image_pos3 from '../../images/pat_pos3.jpg';
-import image_pos4 from '../../images/pat_pos4.jpg';
-import image_pos5 from '../../images/pat_pos5.jpg';
-import image_pos6 from '../../images/pat_pos6.jpg';
-import image_pos7 from '../../images/pat_pos7.jpg';
-import image_pos8 from '../../images/pat_pos8.jpg';
-import default_image from '../../images/pat_default.jpg';
 import ReactDOM from 'react-dom';
 import './styles.css';
-
+import classNames from 'classnames';
 
 class CursorViewImage extends React.Component {
   constructor(props) {
@@ -127,45 +118,46 @@ class CursorViewImage extends React.Component {
 
     //RENDER IMAGE POSITION 8
     if (cursorLocation.isLeft && cursorLocation.isUpper) {
-      return image_pos8;
+      return "ImagePos_8";
     }
     //RENDER IMAGE POSITION 1
     else if (cursorLocation.isUpper && !cursorLocation.isLeft && !cursorLocation.isRight) {
-      return image_pos1;
+      return "ImagePos_1";
     }
-    //RENDER IMAGE POSITION 2
+    //RENDER IMAGE POSITION 222
     else if (cursorLocation.isUpper && cursorLocation.isRight) {
-      return image_pos2;
+      return "ImagePos_2";
     }
     //RENDER IMAGE POSITION 3
     else if (cursorLocation.isRight && !cursorLocation.isUpper && !cursorLocation.isBelow) {
-      return image_pos3;
+      return "ImagePos_3";
     }
     //RENDER IMAGE POSITION 4
     else if (cursorLocation.isRight && cursorLocation.isBelow) {
-      return image_pos4;
+      return "ImagePos_4";
     }
     //RENDER IMAGE POSITION 5
     else if (cursorLocation.isBelow && !cursorLocation.isLeft && !cursorLocation.isRight) {
-      return image_pos5;
+      return "ImagePos_5";
     }
     //RENDER IMAGE POSITION 6
     else if (cursorLocation.isLeft && cursorLocation.isBelow) {
-      return image_pos6;
+      return "ImagePos_6";
     }
     //RENDER IMAGE POSITION 7
     else if (cursorLocation.isLeft && !cursorLocation.isBelow && !cursorLocation.isUpper) {
-      return image_pos7;
+      return "ImagePos_7";
     }
     //RENDER DEFAULT IMAGE
     else {
-      return default_image;
+      return "ImagePosDefault";
     }
   }
 
   renderImage = () => {
+    console.log('ImagePath:', this.props.images);
     return (
-      <img className="Image" ref={this.Ref} alt="teamMember" src={this.getImageSource()} />
+      <div className={classNames("Image", this.getImageSource())} style={{backgroundImage: 'url(' + this.props.images + ')'}} ref={this.Ref} alt={this.props.name} />
     );
   }
 
@@ -173,7 +165,10 @@ class CursorViewImage extends React.Component {
     return (
       <div className="ImageWrapper">
         {this.renderImage()}
-        <div className="NameBox">{this.props.name}</div>
+        <div className="NameBox">
+          <p className="Name">{this.props.name}</p>
+          <p className="Description">{this.props.description}</p>
+        </div>
       </div>
     );
   }

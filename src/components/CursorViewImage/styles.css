@@ -1,10 +1,12 @@
 .Image {
-  width: 100px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   display: block;
-  border-radius: 20px;
+  border-radius: 50%;
   border: 1px solid white;
   filter: grayscale(100%);
+  background-size: 90px auto;
+  /* background-repeat: no-repeat; */
 }
 
 .Image:hover {
@@ -23,13 +25,13 @@
 
 .NameBox {
   padding: 5px;
-  width: 100px;
+  width: 120px;
   color: white;
   font-size: 12px;
   background-color: rgba(30, 143, 255, 1);
   border-radius: 5px;
   position: absolute;
-  top: -30px;
+  top: -68px;
   left: 3px;
   z-index: 1;
   display: none;
@@ -46,5 +48,50 @@
   transform: rotate(45deg);
   z-index: -1;
 }
+
+.Name {
+  font-size: 15px;
+}
+
+.Description {
+  font-size: 10px;
+}
+
+.ImagePosDefault {
+  background-position: 8px -10px;
+}
+
+.ImagePos_1 {
+  background-position: 0 -138px;
+}
+
+.ImagePos_2 {
+  background-position: 0 -254px;
+}
+
+.ImagePos_3 {
+  background-position: 0 -367px;
+}
+
+.ImagePos_4 {
+  background-position: 0 -486px;
+}
+
+.ImagePos_5 {
+  background-position: 7px -602px;
+}
+
+.ImagePos_6 {
+  background-position: 13px -726px;
+}
+
+.ImagePos_7 {
+  background-position: 0 -848px;
+}
+
+.ImagePos_8 {
+  background-position: 0 -973px;
+}
+
 
 

@@ -7,6 +7,6 @@ body {
 .Wrapper {
   position: absolute;
   width: 100%;
-  height: 800px;
+  height: 100%;
   background-color: #0000002e;
 }
