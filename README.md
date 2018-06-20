@@ -22,3 +22,7 @@ with these informations we can calculate the area in which the cursor is and ren
 you can see the calculation in the attached file.
 
 [attached-files](https://github.com/patbottarella/360/edit/master/Teampage_360-calculation.pdf)
+
+# Images
+
+To display the images in the right position, the image must be a square --> dimensions: width: 90px, height: 90px.
